@@ -222,10 +222,10 @@
         <el-row :gutter="40">
             <el-col :xs="24" :sm="24" :md="10" :lg="10" :xl="10" style="padding:40px;">
                 <div style="padding:30px;margin:20px 0;font-size:14px;">
-                    <div style="font-size:28px;font-weight:bold;margin-bottom:20px;">物美智能生活物联网平台</div>
+                    <div style="font-size:28px;font-weight:bold;margin-bottom:20px;">智能物联网平台</div>
                     <div style="display:table;font-size:14px;margin-bottom:10px;">
                         <div style="display:table-cell;line-height:22px;"><b style="color:#67C23A;margin-right:10px;">开源版本采用AGPL-3.0许可协议，商业用途需要获得授权</b>
-                           
+
                         </div>
                     </div>
                     <div style="display:table;margin-bottom:10px;">

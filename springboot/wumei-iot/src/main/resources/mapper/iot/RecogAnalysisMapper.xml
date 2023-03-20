@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.RecogAnalysisMapper">
+
+    <resultMap type="RecogAnalysis" id="RecogAnalysisResult">
+        <result property="recogId"    column="recog_id"    />
+        <result property="leafName"    column="leaf_name"    />
+        <result property="imgName"    column="img_name"    />
+        <result property="recogFlag"    column="recog_flag"    />
+        <result property="diseaseName"    column="disease_name"    />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+        <result property="modelName"    column="model_name"    />
+        <result property="recogProb"    column="recog_prob"    />
+        <result property="timeUsing"    column="time_using"    />
+        <result property="imgUrl"    column="img_url"    />
+        <result property="modelId"    column="model_id"    />
+    </resultMap>
+
+    <sql id="selectRecogAnalysisVo">
+        select recog_id, leaf_name, img_name, recog_flag, disease_name, del_flag, create_by, create_time, update_by, update_time, remark, model_name, recog_prob, time_using, img_url, model_id from recog_analysis
+    </sql>
+
+    <select id="selectRecogAnalysisList" parameterType="RecogAnalysis" resultMap="RecogAnalysisResult">
+        <include refid="selectRecogAnalysisVo"/>
+        <where>
+            <if test="leafName != null  and leafName != ''"> and leaf_name like concat('%', #{leafName}, '%')</if>
+            <if test="imgName != null  and imgName != ''"> and img_name like concat('%', #{imgName}, '%')</if>
+            <if test="recogFlag != null  and recogFlag != ''"> and recog_flag = #{recogFlag}</if>
+            <if test="diseaseName != null  and diseaseName != ''"> and disease_name like concat('%', #{diseaseName}, '%')</if>
+            <if test="modelName != null  and modelName != ''"> and model_name like concat('%', #{modelName}, '%')</if>
+            <if test="recogProb != null "> and recog_prob = #{recogProb}</if>
+            <if test="timeUsing != null "> and time_using = #{timeUsing}</if>
+            <if test="imgUrl != null  and imgUrl != ''"> and img_url = #{imgUrl}</if>
+            <if test="modelId != null "> and model_id = #{modelId}</if>
+        </where>
+    </select>
+
+    <select id="selectRecogAnalysisByRecogId" parameterType="Long" resultMap="RecogAnalysisResult">
+        <include refid="selectRecogAnalysisVo"/>
+        where recog_id = #{recogId}
+    </select>
+
+    <insert id="insertRecogAnalysis" parameterType="RecogAnalysis" useGeneratedKeys="true" keyProperty="recogId">
+        insert into recog_analysis
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="leafName != null and leafName != ''">leaf_name,</if>
+            <if test="imgName != null and imgName != ''">img_name,</if>
+            <if test="recogFlag != null">recog_flag,</if>
+            <if test="diseaseName != null">disease_name,</if>
+            <if test="delFlag != null">del_flag,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+            <if test="modelName != null">model_name,</if>
+            <if test="recogProb != null">recog_prob,</if>
+            <if test="timeUsing != null">time_using,</if>
+            <if test="imgUrl != null">img_url,</if>
+            <if test="modelId != null">model_id,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="leafName != null and leafName != ''">#{leafName},</if>
+            <if test="imgName != null and imgName != ''">#{imgName},</if>
+            <if test="recogFlag != null">#{recogFlag},</if>
+            <if test="diseaseName != null">#{diseaseName},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="modelName != null">#{modelName},</if>
+            <if test="recogProb != null">#{recogProb},</if>
+            <if test="timeUsing != null">#{timeUsing},</if>
+            <if test="imgUrl != null">#{imgUrl},</if>
+            <if test="modelId != null">#{modelId},</if>
+        </trim>
+    </insert>
+
+    <update id="updateRecogAnalysis" parameterType="RecogAnalysis">
+        update recog_analysis
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="leafName != null and leafName != ''">leaf_name = #{leafName},</if>
+            <if test="imgName != null and imgName != ''">img_name = #{imgName},</if>
+            <if test="recogFlag != null">recog_flag = #{recogFlag},</if>
+            <if test="diseaseName != null">disease_name = #{diseaseName},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="modelName != null">model_name = #{modelName},</if>
+            <if test="recogProb != null">recog_prob = #{recogProb},</if>
+            <if test="timeUsing != null">time_using = #{timeUsing},</if>
+            <if test="imgUrl != null">img_url = #{imgUrl},</if>
+            <if test="modelId != null">model_id = #{modelId},</if>
+        </trim>
+        where recog_id = #{recogId}
+    </update>
+
+    <delete id="deleteRecogAnalysisByRecogId" parameterType="Long">
+        delete from recog_analysis where recog_id = #{recogId}
+    </delete>
+
+    <delete id="deleteRecogAnalysisByRecogIds" parameterType="String">
+        delete from recog_analysis where recog_id in
+        <foreach item="recogId" collection="array" open="(" separator="," close=")">
+            #{recogId}
+        </foreach>
+    </delete>
+</mapper>

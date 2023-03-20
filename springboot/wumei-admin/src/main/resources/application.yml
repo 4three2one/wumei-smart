@@ -65,7 +65,7 @@ spring:
     # 数据库索引
     database: 0
     # 密码
-    password: wumei-smart
+    password:
     # 连接超时时间
     timeout: 10s
     lettuce:
@@ -80,8 +80,8 @@ spring:
         max-wait: -1ms
   # mqtt 配置
   mqtt:
-    username: wumei-smart                      # 账号
-    password: wumei-smart                      # 密码
+    username:                       # 账号
+    password:                       # 密码
     host-url: tcp://localhost:1883             # mqtt连接tcp地址
     client-id: ${random.int}                   # 客户端Id，不能相同，采用随机数 ${random.value}
     default-topic: test                        # 默认主题

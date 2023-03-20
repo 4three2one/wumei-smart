@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import logoImg from '@/assets/logo/logo.png'
+import logoImg from '@/assets/logo/aiot_logo.png'
 import variables from '@/assets/styles/variables.scss'
 
 export default {
@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      title: '物美智能物联网平台',
+      title: '智能物联平台',
       logo: logoImg
     }
   }
@@ -66,7 +66,7 @@ export default {
     width: 100%;
 
     & .sidebar-logo {
-      width: 32px;
+      width: 70px;
       height: 32px;
       vertical-align: middle;
       margin-right: 12px;
